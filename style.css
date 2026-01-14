@@ -213,8 +213,8 @@ p {
 @media screen and (orientation: portrait) {
   .container,
   .containerT2 {
-    width: 89.11%;
-    max-height: 60%;
+    width: 90%;
+    max-height: 90%;
     padding: 3.5rem 5.5rem 8.5rem 2.9rem;
     box-shadow: none;
   }
@@ -246,3 +246,4 @@ p {
     margin-left: 0;
   }
 }
+
