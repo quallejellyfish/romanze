@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>aaaa</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  </head>
+
+  <body>
+    <div class="wrap">
+      <div id="content" class="container">
+        <!--Überschrift + cool game-->
+        <div class="heading">
+          <div onclick="playSegment(0, 2)" class="title">
+            Sachliche Romanze (1928)
+          </div>
+          <div style="position: absolute; right: 0px; top: 0px">
+            <div class="quarter-circle">
+              <div class="aa">mini Spiel</div>
+              <button id="guide">Press Me!</button>
+            </div>
+            <div class="guide">
+              <div class="close" id="exit">X</div>
+              <h4 style="padding-bottom: 2rem">Sachliche Memory Spiel</h4>
+              <p>press on the green button to start the game</p>
+              <button
+                id="lueckenSpiel"
+                class="w3-panel w3-green"
+                style="margin-bottom: 1rem"
+              >
+                Start Game
+              </button>
+              <button id="restartGame" class="w3-panel w3-red">
+                Restart Game
+              </button>
+            </div>
+          </div>
+          <em class="underTitle">Erich Kästner</em><br />
+        </div>
+
+        <!--audio auidoo audio aduiop-->
+        <audio
+          id="poemAudio"
+          src="https://audio.jukehost.co.uk/29CwcpNdTtul4vf1HT685cumitWgul89"
+        ></audio>
+
+        <div class="wrapa">
+          <!-- 1st Strophe -->
+          <div class="content">
+            <p onclick="playSegment(5, 9.47)">
+              Als sie einander acht Jahre kannten
+            </p>
+            <p onclick="playSegment(9.6, 12)">
+              (und man darf sagen: sie kanten sich gut)
+            </p>
+            <p onclick="playSegment(12, 15.5)">
+              kam ihre Liebe plötzlich abhanden.
+            </p>
+            <p onclick="playSegment(15.2, 18.5)">
+              Wie anderen Leuten ein Stock oder Hut.
+            </p>
+          </div>
+
+          <!-- Goethe Bild -->
+          <!-- <div class="goethe"></div>-->
+
+          <!-- 2nd Strophe -->
+          <div class="content2">
+            <p onclick="playSegment(19, 23)">
+              Sie waren traurig, bretrugen sich heiter,
+            </p>
+            <p onclick="playSegment(23, 26)">
+              versuchten Küsse, als ob nichts sei,
+            </p>
+            <p onclick="playSegment(26.5, 30)">
+              und sahen sich an und wussten nicht weiter.
+            </p>
+            <p onclick="playSegment(30, 34.5)">
+              Da weinte sie schließlich. Und er stand dabei.
+            </p>
+          </div>
+
+          <!-- Goethe Schrift Bild -->
+          <!-- <div class="goetheSchrift"></div>-->
+
+          <!-- 3rd Strophe -->
+          <div class="content3">
+            <p onclick="playSegment(35, 37.9)">
+              Vom Fenster aus konnte man Schiffen winken.
+            </p>
+            <p onclick="playSegment(38.5, 41)">
+              Er sagte. es wäre schon Viertel nach vier.
+            </p>
+            <p onclick="playSegment(41.2, 43.8)">
+              und Zeit, irgendwo Kaffe zu trinken.
+            </p>
+            <p onclick="playSegment(44, 47)">
+              Nebenan übte ein Mensch Klavier.
+            </p>
+          </div>
+
+          <!-- 4th Strophe -->
+          <div class="content4">
+            <p onclick="playSegment(48.1, 51.2)">
+              Sie gingen ins kleinste Café am Ort
+            </p>
+            <p onclick="playSegment(51.4, 53)">und rührten in ihren Tassen.</p>
+            <p onclick="playSegment(54, 57)">
+              Am Abend saßen sie immer noch dort.
+            </p>
+            <p onclick="playSegment(57.1, 61)">
+              Sie saßen allein und sie sprachen kein Wort
+            </p>
+            <p onclick="playSegment(61.3, 65)">
+              und konnten es einfach nicht fassen.
+            </p>
+          </div>
+
+          <br /><br />
+          <!--<p
+            style="
+              font-size: 50px;
+              visibility: hidden;
+              z-index: -1;
+              margin-top: 2.2rem;
+            "
+          >
+            aa
+          </p>-->
+          <button id="submit" class="w3-panel w3-pale-green w3-border">
+            Submit
+          </button>
+          <!--results-->
+          <div class="results">
+            <p id="correctCount">Richtig:</p>
+            <p id="wrongCount" style="margin-top: 1rem">Falsch:</p>
+            <p id="grade" style="margin-top: 1rem">Note: -</p>
+            <br /><br />
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

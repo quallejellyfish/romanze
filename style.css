@@ -1,0 +1,248 @@
+* {
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  background-color: #dbdbba;
+}
+.wrap {
+  margin: 72px 5px 5rem 5px;
+}
+
+.heading {
+  margin-bottom: 3rem;
+}
+
+.container {
+  display: block;
+  position: absolute;
+  background-color: aliceblue;
+  max-height: 73.3%;
+  padding: 3.5rem 7.5rem 8.5rem 5.5rem;
+  overflow-y: auto;
+  box-shadow: black -7px 7px 7px;
+  margin: 0 auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.wrapa {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+@keyframes entry {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes exit {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+
+/*.container * {
+    opacity: 0;
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.container *._visible,
+.containerT2 *._visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.container *._hidden,
+.containerT2 *._hidden {
+    opacity: 0;
+    transform: translateY(-100%);
+}
+
+.container button,
+.container input,
+.containerT2 button,
+.containerT2 input {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: none;
+}*/
+
+.close {
+  text-decoration: none;
+  background-color: red;
+  font-size: 2.2rem;
+  color: #ffffff;
+  border-radius: 50%;
+  display: block;
+  position: absolute;
+  right: -2rem;
+  top: -1.5rem;
+  width: 4rem;
+  padding: 5px 0px 0px 17px;
+  height: 4rem;
+}
+
+.title {
+  font-size: 48px;
+  position: sticky;
+}
+
+.underTitle {
+  margin-bottom: 16rem;
+}   
+
+.content,
+.content2,
+.content3,
+.content4 {
+  font-size: 21px;
+  width: 250px;
+}
+
+.results {
+  display: none;
+  margin-top: 6.9rem;
+  font-size: 21px;
+  height: 10px;
+  width: 250px;
+}
+
+p {
+  margin-top: -21px;
+}
+
+.goethe {
+  position: absolute;
+  background-image: url(geothe.png);
+  border-radius: 0 60px 60px 0;
+  background-size: 135.5% 105%;
+  margin-top: 17rem;
+  height: 15rem;
+  width: 15rem;
+}
+
+.goetheSchrift {
+  position: absolute;
+  background-image: url(goetheschrift.png);
+  border-radius: 60px 0 0 60px;
+  background-size: 100% 107%;
+  margin-top: 18rem;
+  margin-left: 18rem;
+  height: 40rem;
+  width: 22rem;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.teilSwitcher {
+  background-color: azure;
+  width: 10rem;
+  font-size: larger;
+  height: 4rem;
+  right: -31.77rem;
+  top: 19rem;
+  position: relative;
+}
+
+.guide {
+  display: none;
+  visibility: visible;
+  opacity: 1;
+  backdrop-filter: blur(10px);
+  z-index: 2;
+  background-color: blanchedalmond;
+  width: 285px;
+  height: 380px;
+  padding: 1.5rem 1.5rem 1.5rem 3.5rem;
+  transform: translate(-125%, 10%);
+  position: absolute;
+}
+
+.guide.hidden {
+  opacity: 0;
+  display: none;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease-in-out;
+}
+
+.w3-panel {
+  height: 4rem;
+}
+
+#submit {
+  display: none;
+  margin-top: 10rem;
+  font-weight: 700;
+}
+
+.aa {
+  margin: 8px;
+  font-size: 18px;
+}
+.mm {
+    display: none;
+    margin-top: 6.7rem!important;
+}
+.quarter-circle {
+  width: 130px;
+  height: 130px;
+  writing-mode: vertical-rl;
+  padding-top: 35px;
+  background: rgba(255, 166, 0, 0.548);
+  transform: rotate(-90deg);
+  border-radius: 130px 0 0 0;
+  -moz-border-radius: 130px 0 0 0;
+  -webkit-border-radius: 130px 0 0 0;
+}
+
+@media screen and (orientation: portrait) {
+  .container,
+  .containerT2 {
+    width: 89.11%;
+    max-height: 60%;
+    padding: 3.5rem 5.5rem 8.5rem 2.9rem;
+    box-shadow: none;
+  }
+  .quarter-circle {
+    width: 100px;
+    height: 100px;
+  }
+  .title {
+    font-size: 28px;
+  }
+
+  .teilSwitcher {
+    right: 0.89rem;
+  }
+
+  .aa {
+    font-size: 13px;
+  }
+
+  #guide {
+    font-size: 11px;
+  }
+
+  .guide {
+    right: 20%;
+  }
+
+  .content2 {
+    margin-left: 0;
+  }
+}
