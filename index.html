@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sachlich Romanze - Gedicht</title>
+    <title>aaaa</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
   </head>
@@ -24,6 +24,39 @@
             <div class="guide">
               <div class="close" id="exit">X</div>
               <h4 style="padding-bottom: 2rem">Sachliche Memory Spiel</h4>
+              <label
+                for="stropheSelect"
+                style="display: block; margin-bottom: 0.5rem"
+              >
+                Welche Strophe kommt ins Spiel?
+              </label>
+              <select
+                id="stropheSelect"
+                class="w3-select w3-border"
+                style="margin-bottom: 1rem"
+              >
+                <option value="all" selected>Alle Strophen</option>
+                <option value="1">Strophe 1</option>
+                <option value="2">Strophe 2</option>
+                <option value="3">Strophe 3</option>
+                <option value="4">Strophe 4</option>
+              </select>
+              <label
+                for="difficulty"
+                style="display: block; margin-bottom: 0.5rem"
+              >
+                Schwierigkeitsgrad
+              </label>
+              <select
+                id="difficulty"
+                class="w3-select w3-border"
+                style="margin-bottom: 3rem"
+              >
+                <option value="easy">Leicht (1 Lücke)</option>
+                <option value="medium" selected>Mittel (2 Lücken)</option>
+                <option value="hard">Schwer (3 Lücken)</option>
+                <option value="extreme">Extrem (alle)</option>
+              </select>
               <p>press on the green button to start the game</p>
               <button
                 id="lueckenSpiel"
@@ -69,7 +102,7 @@
           <!-- 2nd Strophe -->
           <div class="content2">
             <p onclick="playSegment(19, 23)">
-              Sie waren traurig, betrugen sich heiter,
+              Sie waren traurig, bretrugen sich heiter,
             </p>
             <p onclick="playSegment(23, 26)">
               versuchten Küsse, als ob nichts sei,
@@ -145,7 +178,3 @@
     <script src="script.js"></script>
   </body>
 </html>
-
-
-
-
