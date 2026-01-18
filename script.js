@@ -16,13 +16,15 @@ guide.addEventListener("click", (e) => {
   guideContent.scrollTop = 0;
 });
 
-exit.addEventListener("click", () => {
-  console.log("exited");
-  guideContent.classList.add("hidden");
+document.addEventListener("click", (e) => {
+  if (!guideContent.contains(e.target) && e.target !== guide) {
+    console.log("b");
+    guideContent.classList.add("hidden");
+  }
 });
 
-document.addEventListener("click", (e) => {
-  console.log("b");
+exit.addEventListener("click", () => {
+  console.log("exited");
   guideContent.classList.add("hidden");
 });
 
@@ -64,9 +66,12 @@ function playSegment(startTime, endTime) {
   });
 
   // Stop the audio after the segment ends
-  timeoutId = setTimeout(() => {
-    audio.pause();
-  }, (endTime - startTime) * 1000); // Convert to milliseconds
+  timeoutId = setTimeout(
+    () => {
+      audio.pause();
+    },
+    (endTime - startTime) * 1000,
+  ); // Convert to milliseconds
 }
 
 // Optional: Clear timeout if audio is paused or stopped manually
@@ -81,11 +86,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const game = document.getElementById("lueckenSpiel");
   const restart = document.getElementById("restartGame");
   const submit = document.getElementById("submit");
-  const content4 = document.querySelector(".content4");
+  // const content4 = document.querySelector(".content4");
   const correctCounter = document.getElementById("correctCount");
   const wrongCounter = document.getElementById("wrongCount");
   const note = document.getElementById("grade");
   const results = document.querySelector(".results");
+  const difficultySelect = document.getElementById("difficulty");
+  const stropheSelect = document.getElementById("stropheSelect");
+
   //const goethe = document.querySelector(".goethe");
 
   const originalContent = {}; // store the original tags
@@ -94,19 +102,30 @@ document.addEventListener("DOMContentLoaded", () => {
   // bring back prime göttinge
   function storeOriginalContent() {
     //const abteilung = [".content", ".content2", ".content3", ".content4", ".content5"];
-    const abteilung = [
-      ".container .content",
-      ".container .content2",
-      ".container .content3",
-      ".container .content4",
-    ];
+
+    let abteilung = [];
+
+    const selectedStrophe = stropheSelect.value;
+
+    const stropheMap = {
+      1: ".container .content",
+      2: ".container .content2",
+      3: ".container .content3",
+      4: ".container .content4",
+    };
+
+    if (selectedStrophe === "all") {
+      abteilung = Object.values(stropheMap);
+    } else {
+      abteilung = [stropheMap[selectedStrophe]];
+    }
 
     abteilung.forEach((section) => {
       const paragraphs = document.querySelectorAll(`${section} p`);
 
       if (!originalContent[section]) {
         originalContent[section] = Array.from(paragraphs).map(
-          (p) => p.outerHTML
+          (p) => p.outerHTML,
         );
       }
     });
@@ -137,13 +156,19 @@ document.addEventListener("DOMContentLoaded", () => {
     //const abteilung = [".content", ".content2", ".content3", ".content4", ".content5"];
     let abteilung = [];
 
-    if (currentContainer === ".container") {
-      abteilung = [
-        ".container .content",
-        ".container .content2",
-        ".container .content3",
-        ".container .content4",
-      ];
+    const selectedStrophe = stropheSelect.value;
+
+    const stropheMap = {
+      1: ".container .content",
+      2: ".container .content2",
+      3: ".container .content3",
+      4: ".container .content4",
+    };
+
+    if (selectedStrophe === "all") {
+      abteilung = Object.values(stropheMap);
+    } else {
+      abteilung = [stropheMap[selectedStrophe]];
     }
 
     abteilung.forEach((teilung) => {
@@ -154,12 +179,22 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
+      const difficulty = difficultySelect.value;
+
+      let removeCount = 2; // default
+
+      if (difficulty === "easy") removeCount = 1;
+      if (difficulty === "hard") removeCount = 3;
+      if (difficulty === "extreme") removeCount = verse.length;
+
+      removeCount = Math.min(removeCount, verse.length);
+
       const randomVerses = [];
-      while (randomVerses.length < 2) {
+
+      while (randomVerses.length < removeCount) {
         const randomVerse = Math.floor(Math.random() * verse.length);
         if (!randomVerses.includes(randomVerse)) {
           randomVerses.push(randomVerse);
-          console.log(randomVerse);
         }
       }
 
@@ -169,7 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const textField = document.createElement("input");
         const onclickAttr = p.getAttribute("onclick");
         const timeMatches = onclickAttr.match(
-          /playSegment\(([^,]+), ([^)]+)\)/
+          /playSegment\(([^,]+), ([^)]+)\)/,
         );
 
         let startTime = 0;
@@ -179,11 +214,11 @@ document.addEventListener("DOMContentLoaded", () => {
           startTime = parseFloat(timeMatches[1]);
           endTime = parseFloat(timeMatches[2]);
           console.log(
-            `Extracted times for index ${index}: startTime=${startTime}, endTime=${endTime}`
+            `Extracted times for index ${index}: startTime=${startTime}, endTime=${endTime}`,
           );
         } else {
           console.warn(
-            `No matching times found for index ${index} in onclick: ${onclickAttr}`
+            `No matching times found for index ${index} in onclick: ${onclickAttr}`,
           );
         }
 
@@ -242,7 +277,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const textFields = document.querySelectorAll('input[type="text"]');
 
     const emptyFields = Array.from(textFields).filter(
-      (textField) => textField.dataset.filled === "false"
+      (textField) => textField.dataset.filled === "false",
     );
 
     if (emptyFields.length > 0) {
