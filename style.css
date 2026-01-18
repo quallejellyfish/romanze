@@ -104,7 +104,7 @@ body {
 
 .underTitle {
   margin-bottom: 16rem;
-}   
+}
 
 .content,
 .content2,
@@ -166,9 +166,9 @@ p {
   backdrop-filter: blur(10px);
   z-index: 2;
   background-color: blanchedalmond;
-  width: 285px;
-  height: 380px;
-  padding: 1.5rem 1.5rem 1.5rem 3.5rem;
+  width: 300px;
+  height: auto;
+  padding: 1.5rem;
   transform: translate(-125%, 10%);
   position: absolute;
 }
@@ -195,8 +195,8 @@ p {
   font-size: 18px;
 }
 .mm {
-    display: none;
-    margin-top: 6.7rem!important;
+  display: none;
+  margin-top: 6.7rem !important;
 }
 .quarter-circle {
   width: 130px;
@@ -247,5 +247,3 @@ p {
     margin-left: 0;
   }
 }
-
-
