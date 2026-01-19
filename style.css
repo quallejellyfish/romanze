@@ -244,12 +244,13 @@ p {
     font-size: 11px;
   }
 
-  .guide {
+  /*.guide {
     right: 20%;
     transform: translate(0);
-  }
+  }*/
 
   .content2 {
     margin-left: 0;
   }
 }
+
