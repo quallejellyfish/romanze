@@ -16,59 +16,75 @@
           <div onclick="playSegment(0, 2)" class="title">
             Sachliche Romanze (1928)
           </div>
-          <div style="position: absolute; right: 0px; top: 0px">
-            <div class="quarter-circle">
-              <div class="aa">mini Spiel</div>
-              <button id="guide">Press Me!</button>
-            </div>
-            <div class="guide">
-              <div class="close" id="exit">X</div>
-              <h4 style="padding-bottom: 2rem">Sachliche Memory Spiel</h4>
-              <label
-                for="stropheSelect"
-                style="display: block; margin-bottom: 0.5rem"
-              >
-                Welche Strophe kommt ins Spiel?
-              </label>
-              <select
-                id="stropheSelect"
-                class="w3-select w3-border"
-                style="margin-bottom: 1rem"
-              >
-                <option value="all" selected>Alle Strophen</option>
-                <option value="1">Strophe 1</option>
-                <option value="2">Strophe 2</option>
-                <option value="3">Strophe 3</option>
-                <option value="4">Strophe 4</option>
-              </select>
-              <label
-                for="difficulty"
-                style="display: block; margin-bottom: 0.5rem"
-              >
-                Schwierigkeitsgrad
-              </label>
-              <select
-                id="difficulty"
-                class="w3-select w3-border"
-                style="margin-bottom: 3rem"
-              >
-                <option value="easy">Leicht (1 Lücke)</option>
-                <option value="medium" selected>Mittel (2 Lücken)</option>
-                <option value="hard">Schwer (3 Lücken)</option>
-                <option value="extreme">Extrem (alle)</option>
-              </select>
-              <p>press on the green button to start the game</p>
-              <button
-                id="lueckenSpiel"
-                class="w3-panel w3-green"
-                style="margin-bottom: 1rem"
-              >
-                Start Game
-              </button>
-              <button id="restartGame" class="w3-panel w3-red">
-                Restart Game
-              </button>
-            </div>
+          <div class="quarter-circle">
+            <div class="aa">mini Spiel</div>
+            <button id="guide">Press Me!</button>
+          </div>
+          <div class="guide">
+            <div class="close" id="exit">X</div>
+            <h4 style="padding-bottom: 2rem">Sachliche Memory Spiel</h4>
+            <label
+              for="stropheSelect"
+              style="display: block; margin-bottom: 0.5rem"
+            >
+              Welche Strophe kommt ins Spiel?
+            </label>
+            <select
+              id="stropheSelect"
+              class="w3-select w3-border"
+              style="margin-bottom: 1rem"
+            >
+              <option value="all" selected>Alle Strophen</option>
+              <option value="1">Strophe 1</option>
+              <option value="2">Strophe 2</option>
+              <option value="3">Strophe 3</option>
+              <option value="4">Strophe 4</option>
+            </select>
+            <label
+              for="difficulty"
+              style="display: block; margin-bottom: 0.5rem"
+            >
+              Schwierigkeitsgrad
+            </label>
+            <select
+              id="difficulty"
+              class="w3-select w3-border"
+              style="margin-bottom: 1rem"
+            >
+              <option value="easy">Leicht (1 Lücke)</option>
+              <option value="medium" selected>Mittel (2 Lücken)</option>
+              <option value="hard">Schwer (3 Lücken)</option>
+              <option value="extreme">Extrem (alle)</option>
+            </select>
+
+            <label
+              for="volumeSlider"
+              style="display: block; margin-bottom: 0.5rem"
+            >
+              Läutstärke
+              <span id="volumeValue">100%</span>
+            </label>
+            <input
+              type="range"
+              id="volumeSlider"
+              min="0"
+              max="3"
+              step="0.01"
+              value="1"
+              class="w3-range"
+              style="margin-bottom: 3rem"
+            />
+            <p>press on the green button to start the game</p>
+            <button
+              id="lueckenSpiel"
+              class="w3-panel w3-green"
+              style="margin-bottom: 1rem"
+            >
+              Start Game
+            </button>
+            <button id="restartGame" class="w3-panel w3-red">
+              Restart Game
+            </button>
           </div>
           <em class="underTitle">Erich Kästner</em><br />
         </div>
@@ -76,6 +92,7 @@
         <!--audio auidoo audio aduiop-->
         <audio
           id="poemAudio"
+          crossorigin="anonymous"
           src="https://audio.jukehost.co.uk/29CwcpNdTtul4vf1HT685cumitWgul89"
         ></audio>
 
@@ -102,7 +119,7 @@
           <!-- 2nd Strophe -->
           <div class="content2">
             <p onclick="playSegment(19, 23)">
-              Sie waren traurig, betrugen sich heiter,
+              Sie waren traurig, bretrugen sich heiter,
             </p>
             <p onclick="playSegment(23, 26)">
               versuchten Küsse, als ob nichts sei,
@@ -178,4 +195,3 @@
     <script src="script.js"></script>
   </body>
 </html>
-

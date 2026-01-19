@@ -9,6 +9,7 @@ const exit = document.getElementById("exit");
 guide.addEventListener("click", (e) => {
   e.stopPropagation();
   console.log("game menu open");
+  initAudioContext();
   guideContent.style.display = guideContent.style.display = "none"
     ? "block"
     : "none";
@@ -31,7 +32,33 @@ exit.addEventListener("click", () => {
 const audio = document.getElementById("poemAudio");
 let timeoutId;
 
+let audioCtx;
+let gainNode;
+let sourceNode;
+
+function initAudioContext() {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    sourceNode = audioCtx.createMediaElementSource(audio);
+    gainNode = audioCtx.createGain();
+
+    sourceNode.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+  }
+
+  if (audioCtx.state === "suspended") {
+    audioCtx.resume();
+  }
+
+  return gainNode;
+}
+
 function playSegment(startTime, endTime) {
+  const gain = initAudioContext();
+  if (gain) {
+    gain.gain.value = Math.min(volumeSlider.value, 3);
+  }
+
   // Check if the audio element exists
   if (!audio) {
     console.error("Audio element not found.");
@@ -71,28 +98,45 @@ function playSegment(startTime, endTime) {
       audio.pause();
     },
     (endTime - startTime) * 1000,
-  ); // Convert to milliseconds
+  );
 }
 
-// Optional: Clear timeout if audio is paused or stopped manually
-audio.addEventListener("pause", () => {
-  clearTimeout(timeoutId);
-});
-audio.addEventListener("ended", () => {
-  clearTimeout(timeoutId);
-});
+audio.addEventListener("pause", () => clearTimeout(timeoutId));
+audio.addEventListener("ended", () => clearTimeout(timeoutId));
 
 document.addEventListener("DOMContentLoaded", () => {
   const game = document.getElementById("lueckenSpiel");
   const restart = document.getElementById("restartGame");
   const submit = document.getElementById("submit");
-  // const content4 = document.querySelector(".content4");
   const correctCounter = document.getElementById("correctCount");
   const wrongCounter = document.getElementById("wrongCount");
   const note = document.getElementById("grade");
   const results = document.querySelector(".results");
   const difficultySelect = document.getElementById("difficulty");
   const stropheSelect = document.getElementById("stropheSelect");
+  const volumeSlider = document.getElementById("volumeSlider");
+
+  function updateVolumeDisplay(value) {
+    volumeValue.textContent = `${Math.round(value * 100)}%`;
+  }
+
+  // load saved volume
+  const savedVolume = localStorage.getItem("poemVolumeBoost");
+  const startVolume = savedVolume !== null ? parseFloat(savedVolume) : 1;
+
+  volumeSlider.value = startVolume;
+  updateVolumeDisplay(startVolume);
+
+  volumeSlider.addEventListener("input", () => {
+    const gain = initAudioContext();
+    if (!gain) return;
+
+    const value = parseFloat(volumeSlider.value);
+    gain.gain.value = Math.min(value, 3);
+
+    updateVolumeDisplay(value);
+    localStorage.setItem("poemVolumeBoost", value);
+  });
 
   //const goethe = document.querySelector(".goethe");
 
@@ -138,8 +182,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     guideContent.style.display = "none";
     submit.style.display = "block";
-    //content4.style.marginTop = "20.7rem";
-    //goethe.style.marginTop = "16.5rem";
     const container1 = document.querySelector(".container");
     if (container1 && container1.contains(game)) {
       currentContainer = ".container";

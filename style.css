@@ -95,6 +95,7 @@ body {
   width: 4rem;
   padding: 5px 0px 0px 17px;
   height: 4rem;
+  z-index: 5;
 }
 
 .title {
@@ -160,6 +161,7 @@ p {
 }
 
 .guide {
+  position: absolute;
   display: none;
   visibility: visible;
   opacity: 1;
@@ -169,15 +171,16 @@ p {
   width: 300px;
   height: auto;
   padding: 1.5rem;
-  transform: translate(-125%, 10%);
-  position: absolute;
+  margin: auto 100px;
 }
 
 .guide.hidden {
   opacity: 0;
   display: none;
   visibility: hidden;
-  transition: opacity 0.4s ease, visibility 0.4s ease-in-out;
+  transition:
+    opacity 0.4s ease,
+    visibility 0.4s ease-in-out;
 }
 
 .w3-panel {
@@ -199,6 +202,9 @@ p {
   margin-top: 6.7rem !important;
 }
 .quarter-circle {
+  position: absolute;
+  right: 0;
+  top: 0;
   width: 130px;
   height: 130px;
   writing-mode: vertical-rl;
