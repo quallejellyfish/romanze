@@ -245,12 +245,13 @@ p {
   }
 
   .guide {
-    margin: auto 100px;
+    margin: 0!important;
   }
 
   .content2 {
     margin-left: 0;
   }
 }
+
 
 
